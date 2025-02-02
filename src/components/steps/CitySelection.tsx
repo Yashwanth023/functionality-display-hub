@@ -7,6 +7,7 @@ import { Building2 } from 'lucide-react';
 type Props = {
   formData: FormData;
   updateFormData: (data: Partial<FormData>) => void;
+  onNext: () => void;
 };
 
 const POPULAR_CITIES = [
@@ -21,7 +22,7 @@ const POPULAR_CITIES = [
   'Hyderabad'
 ];
 
-const CitySelection = ({ formData, updateFormData }: Props) => {
+const CitySelection = ({ formData, updateFormData, onNext }: Props) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const selectCity = (city: string) => {
@@ -57,7 +58,7 @@ const CitySelection = ({ formData, updateFormData }: Props) => {
       </div>
       <Button 
         className="w-full mt-6"
-        onClick={() => updateFormData({ step: 4 })}
+        onClick={onNext}
         disabled={!formData.city}
       >
         Continue

@@ -6,6 +6,7 @@ import { User, Users } from 'lucide-react';
 type Props = {
   formData: FormData;
   updateFormData: (data: Partial<FormData>) => void;
+  onNext: () => void;
 };
 
 const FAMILY_MEMBERS: { type: FamilyMember['type']; label: string }[] = [
@@ -17,7 +18,7 @@ const FAMILY_MEMBERS: { type: FamilyMember['type']; label: string }[] = [
   { type: 'mother', label: 'Mother' },
 ];
 
-const FamilySelection = ({ formData, updateFormData }: Props) => {
+const FamilySelection = ({ formData, updateFormData, onNext }: Props) => {
   const toggleMember = (type: FamilyMember['type']) => {
     const members = formData.members;
     const exists = members.find(m => m.type === type);
@@ -57,7 +58,7 @@ const FamilySelection = ({ formData, updateFormData }: Props) => {
       </div>
       <Button 
         className="w-full mt-6" 
-        onClick={() => updateFormData({ step: 2 })}
+        onClick={onNext}
         disabled={formData.members.length === 0}
       >
         Continue

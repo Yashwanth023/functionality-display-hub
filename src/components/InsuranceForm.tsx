@@ -38,13 +38,13 @@ const InsuranceForm = () => {
   const renderStep = () => {
     switch (step) {
       case 1:
-        return <FamilySelection formData={formData} updateFormData={updateFormData} />;
+        return <FamilySelection formData={formData} updateFormData={updateFormData} onNext={nextStep} />;
       case 2:
-        return <AgeSelection formData={formData} updateFormData={updateFormData} />;
+        return <AgeSelection formData={formData} updateFormData={updateFormData} onNext={nextStep} />;
       case 3:
-        return <CitySelection formData={formData} updateFormData={updateFormData} />;
+        return <CitySelection formData={formData} updateFormData={updateFormData} onNext={nextStep} />;
       case 4:
-        return <MedicalHistory formData={formData} updateFormData={updateFormData} />;
+        return <MedicalHistory formData={formData} updateFormData={updateFormData} onNext={nextStep} />;
       case 5:
         return <Confirmation formData={formData} />;
       default:

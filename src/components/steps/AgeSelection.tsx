@@ -12,9 +12,10 @@ import {
 type Props = {
   formData: FormData;
   updateFormData: (data: Partial<FormData>) => void;
+  onNext: () => void;
 };
 
-const AgeSelection = ({ formData, updateFormData }: Props) => {
+const AgeSelection = ({ formData, updateFormData, onNext }: Props) => {
   const updateAge = (type: string, age: number) => {
     const updatedMembers = formData.members.map(member =>
       member.type === type ? { ...member, age } : member
@@ -51,7 +52,7 @@ const AgeSelection = ({ formData, updateFormData }: Props) => {
       </div>
       <Button 
         className="w-full mt-6"
-        onClick={() => updateFormData({ step: 3 })}
+        onClick={onNext}
         disabled={!allAgesSelected}
       >
         Continue

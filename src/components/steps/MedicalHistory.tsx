@@ -7,6 +7,7 @@ import { AlertCircle } from 'lucide-react';
 type Props = {
   formData: FormData;
   updateFormData: (data: Partial<FormData>) => void;
+  onNext: () => void;
 };
 
 const MEDICAL_CONDITIONS = [
@@ -20,7 +21,7 @@ const MEDICAL_CONDITIONS = [
   'None of These'
 ];
 
-const MedicalHistory = ({ formData, updateFormData }: Props) => {
+const MedicalHistory = ({ formData, updateFormData, onNext }: Props) => {
   const toggleCondition = (condition: string) => {
     let updatedConditions: string[];
     
@@ -75,7 +76,7 @@ const MedicalHistory = ({ formData, updateFormData }: Props) => {
       </div>
       <Button 
         className="w-full"
-        onClick={() => updateFormData({ step: 5 })}
+        onClick={onNext}
         disabled={formData.medicalConditions.length === 0}
       >
         Continue
